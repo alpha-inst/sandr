@@ -3,49 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chargement en cours...</title>
+    <title>Madis - Profil</title>
 
     <!-- Balises pour l'aperçu de l'image sur X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cliquez pour voir le profil de Madis">
-    <meta name="twitter:description" content="Accéder au profil exclusif.">
+    <meta name="twitter:title" content="Visiter le profil de Madis 🌸">
+    <meta name="twitter:description" content="Cliquez pour accéder au contenu exclusif.">
     <meta name="twitter:image" content="https://githubusercontent.com">
 
-    <meta property="og:title" content="Cliquez pour voir le profil de Madis">
+    <meta property="og:title" content="Visiter le profil de Madis 🌸">
     <meta property="og:image" content="https://githubusercontent.com">
     <meta property="og:type" content="website">
 
-    <!-- Politique de Referrer sécurisée mais standard -->
-    <meta name="referrer" content="same-origin">
-
     <style>
-        body { margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; cursor: pointer; }
-        img { max-width: 100%; max-height: 100vh; object-fit: contain; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 90%;
+            max-height: 60vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        img:active {
+            transform: scale(0.98);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #b030b0, #602080);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(176, 48, 176, 0.4);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Lien invisible mais recouvrant tout l'écran avec l'attribut rel="noreferrer" pour couper le lien avec X -->
-    <a id="redirect-link" href="https://getmysocial.com" rel="noreferrer" style="display: block; width: 100%; height: 100%; text-decoration: none;">
-        <img src="https://githubusercontent.com" alt="Chargement...">
-    </a>
+    <div class="container">
+        <!-- L'image de prévisualisation cliquable -->
+        <a href="https://getmysocial.com" rel="noreferrer">
+            <img src="https://githubusercontent.com" alt="Aperçu">
+        </a>
+        
+        <br>
+        
+        <!-- Le bouton d'accès avec l'instruction d'effacement de source (rel="noreferrer") -->
+        <a class="btn" href="https://getmysocial.com" rel="noreferrer">
+            Entrer sur le profil
+        </a>
+    </div>
 
-    <script>
-        // Attente d'une seconde complète pour laisser le temps à la page de charger les scripts
-        setTimeout(function() {
-            var link = document.getElementById('redirect-link');
-            
-            // Simule un vrai clic humain sur le lien pour forcer le navigateur à suivre l'URL entière
-            var clickEvent = new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            });
-            link.dispatchEvent(clickEvent);
-            
-            // Sécurité si le clic simulé échoue
-            window.location.href = link.href;
-        }, 1200);
-    </script>
 </body>
 </html>
