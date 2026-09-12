@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargement...</title>
 
-  <title>Loading...</title>
+    <!-- 1. Balises pour forcer X (Twitter) à afficher l'aperçu de l'image -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cliquez pour continuer">
+    <meta name="twitter:description" content="Une prévisualisation de votre contenu.">
+    <meta name="twitter:image" content="https://githubusercontent.com">
 
-  <script>
-    window.addEventListener("load", function () {
+    <!-- Balises Open Graph complémentaires (générales) -->
+    <meta property="og:title" content="Cliquez pour continuer">
+    <meta property="og:image" content="https://githubusercontent.com">
+    <meta property="og:type" content="website">
 
-      // Ouvrir le profil Instagram
-      window.open(
-        "https://www.instagram.com/sara.hcutex?igsh=Z2h6d2lxbTBiNnYy",
-        "_blank"
-      );
+    <!-- 2. Efface le Referrer de X pour que l'origine devienne anonyme (Direct) -->
+    <meta name="referrer" content="no-referrer">
 
-      // Rediriger vers GMS après 5 secondes
-      setTimeout(function () {
-        window.location.href =
-          "https://getmysocial.com/sfgsmadiiis";
-      }, 5000);
+    <!-- 3. Redirection de secours si le JavaScript est bloqué, intégrant la fausse source Instagram -->
+    <meta http-equiv="refresh" content="1;url=https://getmysocial.com">
 
-    });
-  </script>
-
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  </style>
+    <style>
+        body { margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        img { max-width: 100%; max-height: 100vh; object-fit: contain; }
+    </style>
 </head>
-
 <body>
 
-  <img
-    src="https://raw.githubusercontent.com/alpha-inst/sandr/main/preview.png"
-    alt=""
-  >
+    <!-- L'image s'affiche brièvement sur l'écran pendant le chargement -->
+    <img src="https://githubusercontent.com" alt="Loading">
 
+    <script>
+        // Redirection ultra-rapide via JavaScript avec marquage Instagram
+        window.location.replace("https://getmysocial.com");
+    </script>
 </body>
 </html>
