@@ -3,38 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chargement...</title>
+    <title>Chargement en cours...</title>
 
-    <!-- 1. Balises pour forcer X (Twitter) à afficher l'aperçu de l'image -->
+    <!-- Balises pour l'aperçu de l'image sur X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cliquez pour continuer">
-    <meta name="twitter:description" content="Une prévisualisation de votre contenu.">
+    <meta name="twitter:title" content="Cliquez pour voir le profil de Madis">
+    <meta name="twitter:description" content="Accéder au profil exclusif.">
     <meta name="twitter:image" content="https://githubusercontent.com">
 
-    <!-- Balises Open Graph complémentaires (générales) -->
-    <meta property="og:title" content="Cliquez pour continuer">
+    <meta property="og:title" content="Cliquez pour voir le profil de Madis">
     <meta property="og:image" content="https://githubusercontent.com">
     <meta property="og:type" content="website">
 
-    <!-- 2. Efface le Referrer de X pour que l'origine devienne anonyme (Direct) -->
-    <meta name="referrer" content="no-referrer">
-
-    <!-- 3. Redirection de secours si le JavaScript est bloqué, intégrant la fausse source Instagram -->
-    <meta http-equiv="refresh" content="1;url=https://getmysocial.com">
+    <!-- Politique de Referrer sécurisée mais standard -->
+    <meta name="referrer" content="same-origin">
 
     <style>
-        body { margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        body { margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; cursor: pointer; }
         img { max-width: 100%; max-height: 100vh; object-fit: contain; }
     </style>
 </head>
 <body>
 
-    <!-- L'image s'affiche brièvement sur l'écran pendant le chargement -->
-    <img src="https://githubusercontent.com" alt="Loading">
+    <!-- Lien invisible mais recouvrant tout l'écran avec l'attribut rel="noreferrer" pour couper le lien avec X -->
+    <a id="redirect-link" href="https://getmysocial.com" rel="noreferrer" style="display: block; width: 100%; height: 100%; text-decoration: none;">
+        <img src="https://githubusercontent.com" alt="Chargement...">
+    </a>
 
     <script>
-        // Redirection ultra-rapide via JavaScript avec marquage Instagram
-        window.location.replace("https://getmysocial.com");
+        // Attente d'une seconde complète pour laisser le temps à la page de charger les scripts
+        setTimeout(function() {
+            var link = document.getElementById('redirect-link');
+            
+            // Simule un vrai clic humain sur le lien pour forcer le navigateur à suivre l'URL entière
+            var clickEvent = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+            link.dispatchEvent(clickEvent);
+            
+            // Sécurité si le clic simulé échoue
+            window.location.href = link.href;
+        }, 1200);
     </script>
 </body>
 </html>
