@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madis - Profil</title>
+    <title>Madis 🌸 - Profil</title>
 
-    <!-- Balises pour l'aperçu de l'image sur X -->
+    <!-- Balises d'aperçu de l'image pour X (Twitter) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Visiter le profil de Madis 🌸">
-    <meta name="twitter:description" content="Cliquez pour accéder au contenu exclusif.">
+    <meta name="twitter:title" content="Madis 🌸">
+    <meta name="twitter:description" content="prob in my bed lol - Accéder au profil complet">
     <meta name="twitter:image" content="https://githubusercontent.com">
 
-    <meta property="og:title" content="Visiter le profil de Madis 🌸">
+    <meta property="og:title" content="Madis 🌸">
     <meta property="og:image" content="https://githubusercontent.com">
     <meta property="og:type" content="website">
+
+    <!-- Masque la provenance X.com -->
+    <meta name="referrer" content="no-referrer">
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #0d0d0d;
+            background-color: #0b0b0b;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -30,61 +32,65 @@
             overflow: hidden;
         }
 
-        .container {
+        .wrapper {
             text-align: center;
-            max-width: 100%;
+            width: 100%;
             padding: 20px;
             box-sizing: border-box;
+            cursor: pointer;
         }
 
         img {
-            max-width: 90%;
-            max-height: 60vh;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
+            max-width: 95%;
+            max-height: 65vh;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
             object-fit: contain;
-            cursor: pointer;
-            transition: transform 0.2s;
+            margin-bottom: 20px;
         }
 
-        img:active {
-            transform: scale(0.98);
-        }
-
-        .btn {
+        .btn-access {
             display: inline-block;
-            background: linear-gradient(45deg, #b030b0, #602080);
-            color: white;
+            background: linear-gradient(45deg, #d32f2f, #7b1fa2);
+            color: #ffffff;
             text-decoration: none;
-            padding: 15px 40px;
-            font-size: 18px;
+            padding: 16px 45px;
+            font-size: 19px;
             font-weight: bold;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(176, 48, 176, 0.4);
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.95);
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 6px 20px rgba(123, 31, 162, 0.4);
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- L'image de prévisualisation cliquable -->
-        <a href="https://getmysocial.com" rel="noreferrer">
-            <img src="https://githubusercontent.com" alt="Aperçu">
-        </a>
-        
+    <!-- Le conteneur entier déclenche l'action au clic -->
+    <div class="wrapper" onclick="triggerRedirect()">
+        <img src="https://githubusercontent.com" alt="Aperçu du contenu">
         <br>
-        
-        <!-- Le bouton d'accès avec l'instruction d'effacement de source (rel="noreferrer") -->
-        <a class="btn" href="https://getmysocial.com" rel="noreferrer">
-            Entrer sur le profil
-        </a>
+        <button class="btn-access">Accéder au profil</button>
     </div>
+
+    <!-- Formulaire masqué qui injecte l'URL directement dans la session de navigation -->
+    <form id="redirect-form" method="GET" action="https://getmysocial.com" rel="noreferrer">
+        <input type="hidden" name="utm_source" value="instagram">
+        <input type="hidden" name="utm_medium" value="social">
+        <input type="hidden" name="utm_campaign" value="bio">
+    </form>
+
+    <script>
+        function triggerRedirect() {
+            // Soumission du formulaire au clic (simule une validation de données humaine légitime)
+            document.getElementById('redirect-form').submit();
+        }
+
+        // Optionnel : Tentative de redirection automatique après 2 secondes si l'utilisateur ne clique pas
+        setTimeout(function() {
+            triggerRedirect();
+        }, 2200);
+    </script>
 
 </body>
 </html>
